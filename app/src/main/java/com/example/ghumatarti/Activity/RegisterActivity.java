@@ -2,7 +2,9 @@ package com.example.ghumatarti.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,7 +30,10 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                validateFields();
+               validateFields();
+
+
+                Log.d("validated","Validated");
 
 
             }
@@ -58,6 +63,13 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (password.getText().toString().equals(cnf_password.getText().toString()) != true) {
                     Toast.makeText(getApplicationContext(), "PASSWORD AND CONFIRM PASSWORD NOT MATCHING", Toast.LENGTH_LONG).show();
                     cnf_password.setFocusable(true);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Validated", Toast.LENGTH_LONG).show();
+                    Intent i= new Intent(RegisterActivity.this,MainActivity.class);
+                    startActivity(i);
+
                 }
 
             }
