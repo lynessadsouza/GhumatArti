@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "614048455304",
+    "firebase_url": "https://ghumat-arti-default-rtdb.firebaseio.com",
+    "project_id": "ghumat-arti",
+    "storage_bucket": "ghumat-arti.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614048455304:android:4c3960d90157378fda1d3d",
+        "android_client_info": {
+          "package_name": "com.example.ghumatarti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614048455304-iaj2pt48bl90e9av1ucv8js003o0ahjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXHgaox_0mwe0Yj-rDyFJGSACYlRjEV0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614048455304-iaj2pt48bl90e9av1ucv8js003o0ahjt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614048455304:android:4338aadc169db68dda1d3d",
+        "android_client_info": {
+          "package_name": "com.example.mymusicplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614048455304-iaj2pt48bl90e9av1ucv8js003o0ahjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXHgaox_0mwe0Yj-rDyFJGSACYlRjEV0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614048455304-iaj2pt48bl90e9av1ucv8js003o0ahjt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
