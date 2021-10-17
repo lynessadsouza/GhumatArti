@@ -1,5 +1,6 @@
 package com.example.ghumatarti.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.ModelClass.DisplaySongs;
 import com.example.ghumatarti.Adapter.RecyclerAdapter;
 import com.example.ghumatarti.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     public ArrayList<DisplaySongs> displaySongsArrayList = new ArrayList<>();
 
+     BottomNavigationView bottomNavigationView;
 
     //For Onclick of song
     private RecyclerAdapter.RecyclerViewClickListener listener;
@@ -37,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
         upload = (MaterialButton) findViewById(R.id.upload);
         recyclerView = (RecyclerView) findViewById(R.id.recview);
 
@@ -46,6 +52,34 @@ public class MainActivity extends AppCompatActivity {
     /*    RecyclerAdapter recyclerAdapter = new RecyclerAdapter(getApplicationContext(), displaySongsArrayList);
         recyclerView.setAdapter(recyclerAdapter);
 */
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.page_1) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+                if (itemId == R.id.page_2) {
+                    Intent intent = new Intent(getApplicationContext(), SearchSong.class);
+                    startActivity(intent);
+                }
+
+                if (itemId == R.id.page_3) {
+                    Intent intent = new Intent(getApplicationContext(), Favourites.class);
+                    startActivity(intent);
+                }
+
+                if (itemId == R.id.page_4) {
+                    Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                    startActivity(intent);
+                }
+                return false;
+            }
+        });
+
+
+
 
         final DatabaseReference nm = FirebaseDatabase.getInstance().getReference("Songs");
         nm.addListenerForSingleValueEvent(new ValueEventListener() {
