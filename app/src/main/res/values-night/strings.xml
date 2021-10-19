@@ -1,8 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GhumatArti</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="favourites">Favourites</string>
     <string name="profile">Profile</string>
-    <string name="playlist">My Play List</string>
 </resources>
