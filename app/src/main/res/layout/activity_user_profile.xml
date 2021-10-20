@@ -43,6 +43,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:text="Lynessa Dsouza"
+                android:id="@+id/profile_name"
                 android:textColor="@color/black"
                 android:textSize="21sp"
                 android:textStyle="bold" />
@@ -172,6 +173,7 @@
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="lynessa@gmail.com"
+                android:id="@+id/profile_email"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -191,6 +193,7 @@
                 app:tint="@color/purple_700" />
 
             <TextView
+                android:id="@+id/profile_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

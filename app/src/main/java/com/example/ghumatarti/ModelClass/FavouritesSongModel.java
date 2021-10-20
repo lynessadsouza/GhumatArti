@@ -1,22 +1,31 @@
 package com.example.ghumatarti.ModelClass;
 
+public class FavouritesSongModel {
 
-public class DisplaySongs {
-    private String songId;
-    private String songName, songUrl;
-    private String imageUrl, songArtist;
-    private String songDuration;
+    String loggedemail;
+    String songId;
+    String songName;
+    String songUrl;
+    String imageUrl;
+    String songArtist;
+    String songDuration;
 
-    public DisplaySongs() {
-    }
-
-    public DisplaySongs(String songId,String songName, String songUrl, String imageUrl, String songArtist, String songDuration) {
-  this.songId=songId;
+    public FavouritesSongModel(String loggedemail, String songId, String songName, String songUrl, String imageUrl, String songArtist, String songDuration) {
+        this.loggedemail = loggedemail;
+        this.songId = songId;
         this.songName = songName;
         this.songUrl = songUrl;
         this.imageUrl = imageUrl;
         this.songArtist = songArtist;
         this.songDuration = songDuration;
+    }
+
+    public String getLoggedemail() {
+        return loggedemail;
+    }
+
+    public void setLoggedemail(String loggedemail) {
+        this.loggedemail = loggedemail;
     }
 
     public String getSongId() {

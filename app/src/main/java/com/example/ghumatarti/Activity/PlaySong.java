@@ -1,6 +1,6 @@
 package com.example.ghumatarti.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.ghumatarti.Activity.LoginActivity.loggedemail;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -14,19 +14,24 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import com.example.ghumatarti.ModelClass.FavouritesSongModel;
 import com.example.ghumatarti.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PlaySong extends AppCompatActivity {
 
     public int playflag = 0, pausedLength;
 
-    ImageView imageurl;
+    ImageView imageurl, favourite;
     TextView s_name, s_duration, s_artist;
     //, songId;
 
@@ -41,21 +46,32 @@ public class PlaySong extends AppCompatActivity {
 
     MediaPlayer mediaPlayer;
 
+
+    DatabaseReference databaseReference;
+
+    ArrayList<FavouritesSongModel> favouritesSongModel = new ArrayList<FavouritesSongModel>();
+
+    //public    String email=loggedemail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_song);
 
+
+        //
+        // databaseReference = FirebaseDatabase.getInstance().getReference("favourites");
+
         imageurl = (ImageView) findViewById(R.id.songThumbnail);
         s_name = (TextView) findViewById(R.id.s_name);
         s_duration = (TextView) findViewById(R.id.s_duration);
         s_artist = (TextView) findViewById(R.id.s_artist);
+        favourite = (ImageView) findViewById(R.id.favourite);
 
 
         play = (MaterialButton) findViewById(R.id.play);
         pause = (MaterialButton) findViewById(R.id.pause);
 
-        seekBar=(SeekBar)findViewById(R.id.seekbar);
+        seekBar = (SeekBar) findViewById(R.id.seekbar);
 
         mediaPlayer = new MediaPlayer();
 
@@ -93,8 +109,8 @@ public class PlaySong extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 setAudioProgress();
-                
-                
+
+
                 current_pos = seekBar.getProgress();
                 mediaPlayer.seekTo((int) current_pos);
             }
@@ -107,7 +123,7 @@ public class PlaySong extends AppCompatActivity {
 
                 //display the audio duration
                 //.setText(timerConversion((long) total_duration));
-            //    current.setText(timerConversion((long) current_pos));
+                //    current.setText(timerConversion((long) current_pos));
                 seekBar.setMax((int) total_duration);
                 final Handler handler = new Handler();
 
@@ -116,16 +132,15 @@ public class PlaySong extends AppCompatActivity {
                     public void run() {
                         try {
                             current_pos = mediaPlayer.getCurrentPosition();
-                        //    current.setText(timerConversion((long) current_pos));
+                            //    current.setText(timerConversion((long) current_pos));
                             seekBar.setProgress((int) current_pos);
                             handler.postDelayed(this, 1000);
-                        } catch (IllegalStateException ed){
+                        } catch (IllegalStateException ed) {
                             ed.printStackTrace();
                         }
                     }
                 };
                 handler.postDelayed(runnable, 1000);
-
 
 
             }
@@ -145,6 +160,28 @@ public class PlaySong extends AppCompatActivity {
                 return audioTime;
             }
         });
+
+        favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String songId = extras.getString("song_id");
+                String songName = extras.getString("song_name");
+                String songUrl = extras.getString("song_url");
+                String imageUrl = extras.getString("song_imageurl");
+                String songArtist = extras.getString("song_artist");
+                String songDuration = extras.getString("song_duration");
+
+
+                FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+                DatabaseReference reference = rootNode.getReference("Favourites");
+                String id =reference.push().getKey();
+                FavouritesSongModel addFavourite = new FavouritesSongModel(loggedemail, songId, songName, songUrl, imageUrl, songArtist, songDuration);
+                reference.child(id).setValue(addFavourite);
+
+                favourite.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favourite_filled));
+            }
+        });
+        //Favourite ended here
 
 
         play.setOnClickListener(new View.OnClickListener() {
@@ -166,8 +203,8 @@ public class PlaySong extends AppCompatActivity {
                         // url to our media player.
                         mediaPlayer.setDataSource(getApplicationContext(), myUri);
 
-                        int length=mediaPlayer.getCurrentPosition();
-                        Log.d("legth initially",""+length);
+                        int length = mediaPlayer.getCurrentPosition();
+                        Log.d("legth initially", "" + length);
 
                         // below line is use to prepare
                         // and start our media player.
@@ -209,6 +246,7 @@ public class PlaySong extends AppCompatActivity {
         });
 
 
+//Pause button
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -227,7 +265,6 @@ public class PlaySong extends AppCompatActivity {
 
 
                     Log.d("playflag in pause ", "" + playflag);
-
 
 
                     pausedLength = mediaPlayer.getCurrentPosition();

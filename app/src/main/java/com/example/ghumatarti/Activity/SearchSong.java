@@ -11,8 +11,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 
-import com.example.ModelClass.DisplaySongs;
 import com.example.ghumatarti.Adapter.RecyclerAdapter;
+import com.example.ghumatarti.ModelClass.DisplaySongs;
 import com.example.ghumatarti.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -34,7 +34,7 @@ RecyclerView rec_search;
 
   //  RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    public ArrayList<com.example.ModelClass.DisplaySongs> displaySongsArrayList = new ArrayList<>();
+    public ArrayList<DisplaySongs> displaySongsArrayList = new ArrayList<>();
 
     DatabaseReference databaseReference;
 
@@ -61,7 +61,7 @@ RecyclerView rec_search;
 
             @Override
             public void afterTextChanged(Editable editable) {
-                ArrayList<com.example.ModelClass.DisplaySongs> filteredList = new ArrayList<>();
+                ArrayList<DisplaySongs> filteredList = new ArrayList<>();
                 filter(editable.toString(), filteredList );
             }
         });
@@ -70,11 +70,11 @@ RecyclerView rec_search;
 
     }
 
-    private void filter(String toString, ArrayList<com.example.ModelClass.DisplaySongs> filteredList) {
+    private void filter(String toString, ArrayList<DisplaySongs> filteredList) {
         Log.d("Text is ", "" +toString);
 
 //        filteredList.clear();
-        for (com.example.ModelClass.DisplaySongs item : displaySongsArrayList) {
+        for (DisplaySongs item : displaySongsArrayList) {
             if (item.getSongName().toLowerCase().contains(toString.toLowerCase())) {
                 filteredList.add(item);
             }
@@ -103,7 +103,7 @@ RecyclerView rec_search;
                     Log.d("data snapshot", "" + dataSnapshot);
 
                     for (DataSnapshot npsnapshot : dataSnapshot.getChildren()) {
-                        com.example.ModelClass.DisplaySongs displaySongs = npsnapshot.getValue(com.example.ModelClass.DisplaySongs.class);
+                        DisplaySongs displaySongs = npsnapshot.getValue(DisplaySongs.class);
                         Log.d("npsnapshot", "" + npsnapshot);
                         displaySongsArrayList.add(displaySongs);
                         Log.d("heyy", "ADDED");
@@ -135,7 +135,7 @@ RecyclerView rec_search;
 
 
 
-    public void setOnClickListner(ArrayList<com.example.ModelClass.DisplaySongs> displaySongs) {
+    public void setOnClickListner(ArrayList<DisplaySongs> displaySongs) {
         listener = new RecyclerAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View v, int position) {

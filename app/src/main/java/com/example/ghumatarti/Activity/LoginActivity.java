@@ -1,13 +1,12 @@
 package com.example.ghumatarti.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ghumatarti.ModelClass.UserModel;
 import com.example.ghumatarti.R;
@@ -24,6 +23,9 @@ public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText emaill, passwordl;
     MaterialButton login;
+
+    static String loggedemail, loggedname, loggedphone;
+
 
     DatabaseReference getusers;
 
@@ -71,6 +73,10 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.d("user model getpass", "" + userModel.getPassword());
                                     Log.d("user model password", "" + userModel.getEmail());
                                     Log.d("user model password", "" + userModel.getName());
+
+                                    loggedemail = userModel.getEmail();
+                                    loggedname = userModel.getName();
+                                    loggedphone = userModel.getPhone();
 
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);

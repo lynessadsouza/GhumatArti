@@ -11,8 +11,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.ModelClass.DisplaySongs;
 import com.example.ghumatarti.Adapter.RecyclerAdapter;
+import com.example.ghumatarti.ModelClass.DisplaySongs;
 import com.example.ghumatarti.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
@@ -43,15 +43,25 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        upload = (MaterialButton) findViewById(R.id.upload);
+    //    upload = (MaterialButton) findViewById(R.id.upload);
         recyclerView = (RecyclerView) findViewById(R.id.recview);
 
         layoutManager = new LinearLayoutManager(this);
 
 
-    /*    RecyclerAdapter recyclerAdapter = new RecyclerAdapter(getApplicationContext(), displaySongsArrayList);
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter( displaySongsArrayList,listener);
+        recyclerView.setLayoutManager(layoutManager);
+
+
         recyclerView.setAdapter(recyclerAdapter);
-*/
+        recyclerAdapter.notifyDataSetChanged();
+
+
+
+
+
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -90,21 +100,33 @@ public class MainActivity extends AppCompatActivity {
 
                     for (DataSnapshot npsnapshot : dataSnapshot.getChildren()) {
                         DisplaySongs displaySongs = npsnapshot.getValue(DisplaySongs.class);
-                        Log.d("npsnapshot", "" + npsnapshot);
+
                         displaySongsArrayList.add(displaySongs);
-                        Log.d("heyy", "ADDED");
+                   //     RecyclerAdapter recyclerAdapter = new RecyclerAdapter( displaySongsArrayList,listener);
+
+
+                        /*recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(recyclerAdapter);*/
+                      //  recyclerAdapter.notifyDataSetChanged();
+
+
+                        //  Log.d("heyy", "ADDED");
+                        //Log.d("npsnapshot", "" + npsnapshot);
+
                     }
                     setOnClickListner(displaySongsArrayList);
-                  //  RecyclerAdapter recyclerAdapter1 = new RecyclerAdapter(displaySongsArrayList, listener);
+                    //  RecyclerAdapter recyclerAdapter1 = new RecyclerAdapter(displaySongsArrayList, listener);
                     RecyclerAdapter recyclerAdapter = new RecyclerAdapter( displaySongsArrayList,listener);
                     recyclerView.setAdapter(recyclerAdapter);
 
                     recyclerView.setAdapter(recyclerAdapter);
                     recyclerView.setLayoutManager(layoutManager);
+                 //   recyclerAdapter.notifyDataSetChanged();
 
+
+                //    setOnClickListner(displaySongsArrayList);
 
                 }
-
             }
 
             @Override
@@ -115,13 +137,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Upload starts here
-        upload.setOnClickListener(new View.OnClickListener() {
+     /*   upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, UploadSongs.class);
                 startActivity(i);
             }
-        });
+        });*/
         //Upload ends here
 
     }

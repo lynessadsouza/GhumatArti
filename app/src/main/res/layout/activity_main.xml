@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,47 +7,45 @@
     tools:context=".Activity.MainActivity">
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone">
+       <!--<LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="bottom|end"
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="upload" />
-    </LinearLayout>
+           android:visibility="gone">
+
+           <com.google.android.material.button.MaterialButton
+               android:id="@+id/upload"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="upload" />
+       </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation"
+
+        android:scrollbarSize="5dp"
+        android:scrollbars="vertical"
+        tools:ignore="RelativeOverlap" />
+    <!-- android:layout_above="@+id/placeorder"-->
+
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="2dp"
         android:background="@drawable/rounded_bar"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_horizontal"
         app:menu="@menu/bottom_navigation_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
