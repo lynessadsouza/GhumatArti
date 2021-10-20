@@ -15,4 +15,8 @@ public class Changes {
 
     //Remove .mp2 from play song act
 
+
+    //add heart to favourites
+    //dont allow user with same email id to create new account
+
 }

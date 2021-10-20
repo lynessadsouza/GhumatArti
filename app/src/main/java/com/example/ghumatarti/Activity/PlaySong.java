@@ -47,9 +47,9 @@ public class PlaySong extends AppCompatActivity {
     MediaPlayer mediaPlayer;
 
 
-    DatabaseReference databaseReference;
 
-    ArrayList<FavouritesSongModel> favouritesSongModel = new ArrayList<FavouritesSongModel>();
+
+  //  ArrayList<FavouritesSongModel> favouritesSongModel = new ArrayList<FavouritesSongModel>();
 
     //public    String email=loggedemail;
     @Override
@@ -58,29 +58,22 @@ public class PlaySong extends AppCompatActivity {
         setContentView(R.layout.activity_play_song);
 
 
-        //
-        // databaseReference = FirebaseDatabase.getInstance().getReference("favourites");
-
         imageurl = (ImageView) findViewById(R.id.songThumbnail);
         s_name = (TextView) findViewById(R.id.s_name);
         s_duration = (TextView) findViewById(R.id.s_duration);
         s_artist = (TextView) findViewById(R.id.s_artist);
         favourite = (ImageView) findViewById(R.id.favourite);
-
-
         play = (MaterialButton) findViewById(R.id.play);
         pause = (MaterialButton) findViewById(R.id.pause);
-
         seekBar = (SeekBar) findViewById(R.id.seekbar);
 
         mediaPlayer = new MediaPlayer();
+
 
         String information = "Not set";
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-
-
             id = extras.getString("song_id");
             songurl = Uri.parse(extras.getString("song_url"));
             s_name.setText(extras.getString("song_name"));
@@ -89,8 +82,6 @@ public class PlaySong extends AppCompatActivity {
 
             Picasso.get().load(extras.getString("song_imageurl"))
                     .into(imageurl);
-
-
         } else {
             Log.d("name is ", "" + information);
         }
@@ -184,6 +175,7 @@ public class PlaySong extends AppCompatActivity {
         //Favourite ended here
 
 
+//play started
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -244,7 +236,7 @@ public class PlaySong extends AppCompatActivity {
 
             }
         });
-
+//play ended
 
 //Pause button
         pause.setOnClickListener(new View.OnClickListener() {
@@ -282,7 +274,7 @@ public class PlaySong extends AppCompatActivity {
 
 
         });
-
+//pause ended
 
     }
 }

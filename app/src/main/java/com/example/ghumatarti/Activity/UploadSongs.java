@@ -151,6 +151,7 @@ public class UploadSongs extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Task<Uri> task = taskSnapshot.getStorage().getDownloadUrl();
                 while (!task.isComplete());
+
                 Uri urlsong = task.getResult();
                 imageUrl = urlsong.toString();
 //                Log.i("image url", imageUrl);
