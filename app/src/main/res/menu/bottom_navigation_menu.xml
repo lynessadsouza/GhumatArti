@@ -20,6 +20,7 @@
     <item
         android:id="@+id/page_4"
         android:enabled="true"
+
         android:iconTint="@color/purple_200"
         android:icon="@drawable/ic_person"
         android:title="@string/profile"/>

@@ -1,12 +1,12 @@
 package com.example.ghumatarti.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ghumatarti.ModelClass.UserModel;
 import com.example.ghumatarti.R;
@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(RegisterActivity.this,LoginActivity.class);
+                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         });
@@ -58,8 +58,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please Enter name", Toast.LENGTH_LONG).show();
                     //   name.requestFocus();
                     name1.requestFocus();
-                } else if( (phone1.getText().toString().isEmpty()) ||( phone1.getText().toString().length()<10)||( phone1.getText().toString().length()>10) ){
-                        Toast.makeText(getApplicationContext(), "Please Enter Phone Number currectly", Toast.LENGTH_LONG).show();
+                } else if ((phone1.getText().toString().isEmpty()) || (phone1.getText().toString().length() < 10) || (phone1.getText().toString().length() > 10)) {
+                    Toast.makeText(getApplicationContext(), "Please Enter Phone Number currectly", Toast.LENGTH_LONG).show();
                     //   name.requestFocus();
                     phone1.requestFocus();
                 } else if (email1.getText().toString().isEmpty()) {
@@ -82,9 +82,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Validated", Toast.LENGTH_LONG).show();
 
                     //Save Users To database here
-                    
-                    StoreUsers();
 
+                    StoreUsers();
 
 
                     Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
@@ -102,27 +101,25 @@ public class RegisterActivity extends AppCompatActivity {
         String email;
         String password;
 
-        name=name1.getText().toString().trim();
-         phone=phone1.getText().toString().trim();
-         email=email1.getText().toString().trim();
-         password=password1.getText().toString().trim();
-
+        name = name1.getText().toString().trim();
+        phone = phone1.getText().toString().trim();
+        email = email1.getText().toString().trim();
+        password = password1.getText().toString().trim();
 
 
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
 
-       // encodeEmail(email);
+        // encodeEmail(email);
         //encode--> cant add . to the database root node
-String id= email.replace(".",",");
+        String id = email.replace(".", ",");
 
 
 //to decode
-  /*      String id= email.replace(",",".");*/
+        /*      String id= email.replace(",",".");*/
 
 
-
-        UserModel addNewUser = new UserModel(name, phone , email, password);
+        UserModel addNewUser = new UserModel(name, phone, email, password);
         reference.child(id).setValue(addNewUser);
 
         //We will also create a Session here in next videos to keep the user logged In
@@ -132,12 +129,12 @@ String id= email.replace(".",",");
 
     }
 
- /*   private String encodeEmail(String email) {
-        return email.replace(".", ",");
+    /*   private String encodeEmail(String email) {
+           return email.replace(".", ",");
 
 
-    }
-*/
+       }
+   */
     private void initUI() {
 
         register = (MaterialButton) findViewById(R.id.register);
