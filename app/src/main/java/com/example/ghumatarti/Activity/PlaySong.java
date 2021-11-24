@@ -215,7 +215,7 @@ displaySongs.getSongId();
 
 
                             Log.d("cannot add","cnt add");
-                            Toast.makeText(getApplicationContext(),"Favourite already added",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"Favourite already added, Removing It!!!",Toast.LENGTH_LONG).show();
 
                         }else{
                             // username not found

@@ -12,6 +12,7 @@ import com.example.ghumatarti.ModelClass.UserModel;
 import com.example.ghumatarti.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     MaterialButton login;
     DatabaseReference getusers;
 
+    MaterialTextView createuser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +99,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        createuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -105,6 +114,8 @@ public class LoginActivity extends AppCompatActivity {
         emaill = (TextInputEditText) findViewById(R.id.email_login);
         passwordl = (TextInputEditText) findViewById(R.id.password_login);
         login = (MaterialButton) findViewById(R.id.loginbtn);
+        createuser = (MaterialTextView) findViewById(R.id.createuser);
+
     }
     //Init UI ends here
 }
