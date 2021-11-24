@@ -1,15 +1,15 @@
 package com.example.ghumatarti.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ghumatarti.Adapter.RecyclerAdapter;
 import com.example.ghumatarti.ModelClass.DisplaySongs;
@@ -25,12 +25,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    public ArrayList<DisplaySongs> displaySongsArrayList = new ArrayList<>();
     MaterialButton upload;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    public ArrayList<DisplaySongs> displaySongsArrayList = new ArrayList<>();
-
-     BottomNavigationView bottomNavigationView;
+    BottomNavigationView bottomNavigationView;
 
     //For Onclick of song
     private RecyclerAdapter.RecyclerViewClickListener listener;
@@ -43,23 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-    //    upload = (MaterialButton) findViewById(R.id.upload);
+        //    upload = (MaterialButton) findViewById(R.id.upload);
         recyclerView = (RecyclerView) findViewById(R.id.recview);
 
         layoutManager = new LinearLayoutManager(this);
 
 
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter( displaySongsArrayList,listener);
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(displaySongsArrayList, listener);
         recyclerView.setLayoutManager(layoutManager);
 
 
         recyclerView.setAdapter(recyclerAdapter);
         recyclerAdapter.notifyDataSetChanged();
-
-
-
-
-
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -76,19 +70,22 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (itemId == R.id.page_3) {
-                    Intent intent = new Intent(getApplicationContext(), Favourites.class);
+                    Intent intent = new Intent(getApplicationContext(), PlayList.class);
                     startActivity(intent);
                 }
 
                 if (itemId == R.id.page_4) {
+                    Intent intent = new Intent(getApplicationContext(), Favourites.class);
+                    startActivity(intent);
+                }
+
+                if (itemId == R.id.page_5) {
                     Intent intent = new Intent(getApplicationContext(), UserProfile.class);
                     startActivity(intent);
                 }
                 return false;
             }
         });
-
-
 
 
         final DatabaseReference nm = FirebaseDatabase.getInstance().getReference("Songs");
@@ -102,12 +99,12 @@ public class MainActivity extends AppCompatActivity {
                         DisplaySongs displaySongs = npsnapshot.getValue(DisplaySongs.class);
 
                         displaySongsArrayList.add(displaySongs);
-                   //     RecyclerAdapter recyclerAdapter = new RecyclerAdapter( displaySongsArrayList,listener);
+                        //     RecyclerAdapter recyclerAdapter = new RecyclerAdapter( displaySongsArrayList,listener);
 
 
                         /*recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setAdapter(recyclerAdapter);*/
-                      //  recyclerAdapter.notifyDataSetChanged();
+                        //  recyclerAdapter.notifyDataSetChanged();
 
 
                         //  Log.d("heyy", "ADDED");
@@ -116,15 +113,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                     setOnClickListner(displaySongsArrayList);
                     //  RecyclerAdapter recyclerAdapter1 = new RecyclerAdapter(displaySongsArrayList, listener);
-                    RecyclerAdapter recyclerAdapter = new RecyclerAdapter( displaySongsArrayList,listener);
+                    RecyclerAdapter recyclerAdapter = new RecyclerAdapter(displaySongsArrayList, listener);
                     recyclerView.setAdapter(recyclerAdapter);
 
                     recyclerView.setAdapter(recyclerAdapter);
                     recyclerView.setLayoutManager(layoutManager);
-                 //   recyclerAdapter.notifyDataSetChanged();
+                    //   recyclerAdapter.notifyDataSetChanged();
 
 
-                //    setOnClickListner(displaySongsArrayList);
+                    //    setOnClickListner(displaySongsArrayList);
 
                 }
             }
@@ -154,6 +151,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v, int position) {
                 Intent i = new Intent(getApplicationContext(), PlaySong.class);
 
+//Pass Model Class using intents
+             /*   i.putExtra("song",displaySongs);*/
 
 
                 i.putExtra("song_id", displaySongs.get(position).getSongId());

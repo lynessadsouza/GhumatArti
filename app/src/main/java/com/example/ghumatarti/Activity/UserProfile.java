@@ -47,9 +47,12 @@ public class UserProfile extends AppCompatActivity {
         name.setText(loggedname);
         phone.setText(loggedphone);
 
+       // Log.d("Email", "email" + email);
+      String  e = loggedemail.replace(".", ",");
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getInstance().getReference("Favourites");
+        databaseReference = firebaseDatabase.getInstance().getReference("Favourites").child(e);
 
 
         getFavourites();
@@ -57,11 +60,10 @@ public class UserProfile extends AppCompatActivity {
         favouriteCountt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(UserProfile.this,Favourites.class);
+                Intent i = new Intent(UserProfile.this, Favourites.class);
                 startActivity(i);
             }
         });
-
 
 
     }
@@ -92,7 +94,7 @@ public class UserProfile extends AppCompatActivity {
 
                             favouriteCount++;
                             Log.d("Favourite Count", "" + favouriteCount);
-                            favouriteCountt.setText(""+favouriteCount);
+                            favouriteCountt.setText("" + favouriteCount);
 
                         } else {
                             Toast.makeText(getApplicationContext(), "No favourites added", Toast.LENGTH_LONG).show();

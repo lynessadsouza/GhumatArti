@@ -2,7 +2,7 @@ package com.example.ghumatarti.Activity;
 
 public class Changes {
 
-  //  18-10-2021
+    //  18-10-2021
     //Search remaiing
 
     //profile ui completed
@@ -18,5 +18,7 @@ public class Changes {
 
     //add heart to favourites
     //dont allow user with same email id to create new account
+
+    //,ediaplayer playing two songs
 
 }

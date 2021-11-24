@@ -21,12 +21,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public static String loggedemail;
+    static String loggedname;
+    static String loggedphone;
     TextInputEditText emaill, passwordl;
     MaterialButton login;
-
-    static String loggedemail, loggedname, loggedphone;
-
-
     DatabaseReference getusers;
 
     @Override

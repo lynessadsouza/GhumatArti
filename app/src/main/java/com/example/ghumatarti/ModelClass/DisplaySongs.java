@@ -10,8 +10,8 @@ public class DisplaySongs {
     public DisplaySongs() {
     }
 
-    public DisplaySongs(String songId,String songName, String songUrl, String imageUrl, String songArtist, String songDuration) {
-  this.songId=songId;
+    public DisplaySongs(String songId, String songName, String songUrl, String imageUrl, String songArtist, String songDuration) {
+        this.songId = songId;
         this.songName = songName;
         this.songUrl = songUrl;
         this.imageUrl = imageUrl;

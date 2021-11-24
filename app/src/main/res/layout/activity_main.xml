@@ -7,19 +7,19 @@
     tools:context=".Activity.MainActivity">
 
 
-       <!--<LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="bottom|end"
+    <!--<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
 
-           android:visibility="gone">
+        android:visibility="gone">
 
-           <com.google.android.material.button.MaterialButton
-               android:id="@+id/upload"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="upload" />
-       </LinearLayout>-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="upload" />
+    </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"

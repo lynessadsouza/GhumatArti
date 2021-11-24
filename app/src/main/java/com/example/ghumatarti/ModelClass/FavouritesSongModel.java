@@ -10,7 +10,8 @@ public class FavouritesSongModel {
     String songArtist;
     String songDuration;
 
-    public  FavouritesSongModel(){}
+    public FavouritesSongModel() {
+    }
 
     public FavouritesSongModel(String loggedemail, String songId, String songName, String songUrl, String imageUrl, String songArtist, String songDuration) {
         this.loggedemail = loggedemail;

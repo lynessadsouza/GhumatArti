@@ -7,14 +7,12 @@
     <corners
 
         android:topLeftRadius="100dp"
-        android:topRightRadius="100dp"
-        >
-    </corners>
-  <!--  <stroke
-        android:width="1dp"
-        &lt;!&ndash;android:color="@color/purple_200"&ndash;&gt;
-        android:dashWidth="5px"
-        android:dashGap="10px">
-    </stroke>-->
+        android:topRightRadius="100dp"></corners>
+    <!--  <stroke
+          android:width="1dp"
+          &lt;!&ndash;android:color="@color/purple_200"&ndash;&gt;
+          android:dashWidth="5px"
+          android:dashGap="10px">
+      </stroke>-->
 
 </shape>

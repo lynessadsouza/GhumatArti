@@ -11,13 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ghumatarti.ModelClass.DisplaySongs;
 import com.example.ghumatarti.ModelClass.FavouritesSongModel;
 import com.example.ghumatarti.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
 
 
 public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<FavouritesRecyclerAdapter.RecyclerViewHolder> {
@@ -32,14 +30,12 @@ public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<FavouritesRe
     }
 
 
-
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view1 = inflater.inflate(R.layout.song_item, parent, false);
         return new RecyclerViewHolder(view1);
-
 
 
     }
@@ -49,7 +45,7 @@ public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<FavouritesRe
 
 
         holder.songName.setText(favouritesSongModelArrayList.get(position).getSongName());
-        Log.d("songName",""+favouritesSongModelArrayList.get(position).getSongName());
+        Log.d("songName", "" + favouritesSongModelArrayList.get(position).getSongName());
 
         holder.artistName.setText(favouritesSongModelArrayList.get(position).getSongArtist());
         holder.songDuration.setText(favouritesSongModelArrayList.get(position).getSongDuration());
@@ -60,13 +56,8 @@ public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<FavouritesRe
         Picasso.get().load(favouritesSongModelArrayList.get(position).getImageUrl()).into(holder.songThumbnail);
 
         //     String audiolink=songsArrayList.get(position).getSongUrl();
-        Log.d("heyyy","Song Link");
+        Log.d("heyyy", "Song Link");
 
-
-
-    }
-    public interface RecyclerViewClickListener {
-        void onClick(View v, int position);
 
     }
 
@@ -75,11 +66,16 @@ public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<FavouritesRe
         return favouritesSongModelArrayList.size();
     }
 
+    public interface RecyclerViewClickListener {
+        void onClick(View v, int position);
+
+    }
+
     public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView songThumbnail;
 
-        TextView songDuration,artistName,songName;
+        TextView songDuration, artistName, songName;
 
 
         public RecyclerViewHolder(@NonNull View itemView) {
@@ -90,7 +86,6 @@ public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<FavouritesRe
             songThumbnail = itemView.findViewById(R.id.songThumbnail);
 
             itemView.setOnClickListener(this);
-
 
 
         }

@@ -4,24 +4,30 @@
         android:id="@+id/page_1"
         android:enabled="true"
         android:icon="@drawable/ic_home"
-        android:title="@string/home"/>
+        android:title="@string/home" />
     <item
         android:id="@+id/page_2"
         android:enabled="true"
-        android:iconTint="@color/purple_200"
         android:icon="@drawable/ic_search"
         android:title="@string/search" />
+
     <item
         android:id="@+id/page_3"
         android:enabled="true"
-        android:iconTint="@color/purple_200"
-        android:icon="@drawable/ic_favourite_filled"
-        android:title="@string/favourites" />
+        android:icon="@drawable/ic_playlist_add"
+        android:title="@string/playlist" />
+
+
     <item
         android:id="@+id/page_4"
         android:enabled="true"
-
+        android:icon="@drawable/ic_favourite_filled"
         android:iconTint="@color/purple_200"
+        android:title="@string/favourites" />
+    <item
+        android:id="@+id/page_5"
+        android:enabled="true"
         android:icon="@drawable/ic_person"
-        android:title="@string/profile"/>
+        android:iconTint="@color/purple_200"
+        android:title="@string/profile" />
 </menu>

@@ -25,12 +25,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Favourites extends AppCompatActivity {
+public class PlayList extends AppCompatActivity {
 
     public ArrayList<FavouritesSongModel> favouritesSongModelArrayList = new ArrayList<>();
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    int favouriteCount = 0;
+    int playlistCount = 0;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
@@ -45,21 +45,21 @@ public class Favourites extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favourites);
+        setContentView(R.layout.activity_play_list);
 
-        recyclerView = (RecyclerView) findViewById(R.id.favouriteRecview);
+        recyclerView = (RecyclerView) findViewById(R.id.playlistRecview);
         layoutManager = new LinearLayoutManager(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
 
 
-        databaseReference = firebaseDatabase.getInstance().getReference("Favourites").child(emailid);
-        getFavourites();
+        databaseReference = firebaseDatabase.getInstance().getReference("Playlist").child(emailid);
+        getPlaylist();
 
     }
 
 
     //Starts here
-    private void getFavourites() {
+    private void getPlaylist() {
 
         Query query = databaseReference.orderByChild("loggedemail").equalTo(loggedemail);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -86,8 +86,8 @@ public class Favourites extends AppCompatActivity {
 
                             favouritesSongModelArrayList.add(favouritesSongModel);
 
-                            favouriteCount++;
-                            Log.d("Favourite Count", "" + favouriteCount);
+                            playlistCount++;
+                            Log.d("Favourite Count", "" + playlistCount);
 
 
                         } else {
@@ -104,7 +104,7 @@ public class Favourites extends AppCompatActivity {
                     recyclerView.setLayoutManager(layoutManager);
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "No favourites added", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "No Songs are added to playlist", Toast.LENGTH_LONG).show();
                 }
 
             }

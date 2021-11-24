@@ -6,7 +6,8 @@ public class UserModel {
     String email;
     String password;
 
-    public  UserModel(){}
+    public UserModel() {
+    }
 
     public UserModel(String name, String phone, String email, String password) {
 

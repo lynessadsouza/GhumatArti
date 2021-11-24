@@ -3,17 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/buttonstyleithgradient.xml" value="0.2574074074074074" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/circle.xml" value="0.2611111111111111" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/gradientbackground.xml" value="0.2574074074074074" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/gradientbackground1.xml" value="0.2703125" />
         <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/ic_baseline_arrow_downward_24.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/ic_baseline_library_music_24.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/ic_favorite_border.xml" value="0.2703125" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/ic_favourite_filled.xml" value="0.2703125" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/ic_person.xml" value="0.2703125" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/ic_search.xml" value="0.2703125" />
         <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/imagedim.xml" value="0.2703125" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/img.xml" value="0.2611111111111111" />
         <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/layout_bg.xml" value="0.2703125" />
-        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />
-        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_play_song.xml" value="0.2" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/rounded_bar.xml" value="0.2703125" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/drawable/roundedimage.xml" value="0.2703125" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_favourites.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_play_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_play_song.xml" value="0.12" />
         <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_search_song.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_upload_songs.xml" value="0.176" />
-        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/song_item.xml" value="0.33747779751332146" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/playlist_item.xml" value="0.16799999999999998" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/song_item.xml" value="0.12" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/layout/text.xml" value="0.18704710144927536" />
+        <entry key="..\:/Users/saish/AndroidStudioProjects/GhumatArti/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

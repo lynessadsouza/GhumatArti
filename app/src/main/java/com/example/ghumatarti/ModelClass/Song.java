@@ -1,7 +1,7 @@
 package com.example.ModelClass;
 
 public class Song {
-    private String songName,songUrl;
+    private String songName, songUrl;
     private String imageUrl, songArtist, songDuration;
 
     public Song() {

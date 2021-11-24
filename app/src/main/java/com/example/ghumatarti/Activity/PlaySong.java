@@ -14,44 +14,49 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.ghumatarti.ModelClass.FavouritesSongModel;
 import com.example.ghumatarti.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class PlaySong extends AppCompatActivity {
 
     public int playflag = 0, pausedLength;
-
+    public String length;
     ImageView imageurl, favourite;
-    TextView s_name, s_duration, s_artist;
     //, songId;
-
-    String id;
+    TextView s_name, s_duration, s_artist;
+    public String id;
     Uri songurl;
-
     SeekBar seekBar;
-
     double current_pos, total_duration;
     MaterialButton play, pause;
-    public String length;
-
     MediaPlayer mediaPlayer;
 
 
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference favReference;
 
 
-  //  ArrayList<FavouritesSongModel> favouritesSongModel = new ArrayList<FavouritesSongModel>();
+    //public ArrayList<DisplaySongs> displaySongsArrayList = new ArrayList<>();
 
-    //public    String email=loggedemail;
+    public String email = loggedemail;
+    public String emailId;
+
+    FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,14 +72,40 @@ public class PlaySong extends AppCompatActivity {
         pause = (MaterialButton) findViewById(R.id.pause);
         seekBar = (SeekBar) findViewById(R.id.seekbar);
 
+
+        // if (mediaPlayer.isPlaying()==true)
+     /*       if( mediaPlayer.isPlaying())
+        {
+            mediaPlayer.stop();
+        }*/
         mediaPlayer = new MediaPlayer();
 
 
+        Log.d("Email", "email" + email);
+        emailId = email.replace(".", ",");
+
+
+        Log.d("emailId", "" + emailId);
         String information = "Not set";
 
+
         Bundle extras = getIntent().getExtras();
+
+/*
+DisplaySongs displaySongs=(DisplaySongs)getIntent().getSerializableExtra("song");
+//to get values
+displaySongs.getSongId();
+*/
+
+
+        //   getFavourites();
+
+
         if (extras != null) {
             id = extras.getString("song_id");
+
+            Log.d("Song id is  ", ""+id);
+
             songurl = Uri.parse(extras.getString("song_url"));
             s_name.setText(extras.getString("song_name"));
             s_duration.setText(extras.getString("song_duration"));
@@ -85,6 +116,7 @@ public class PlaySong extends AppCompatActivity {
         } else {
             Log.d("name is ", "" + information);
         }
+
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -155,7 +187,75 @@ public class PlaySong extends AppCompatActivity {
         favourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String songId = extras.getString("song_id");
+
+
+                //fav func ends here
+
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Favourites");
+                Query query = reference
+                        .child(emailId)
+                        .orderByChild("songId")
+                        .equalTo(id);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.getChildrenCount()>0) {
+                            //username found
+
+                            for (DataSnapshot childSnapshot: dataSnapshot.getChildren())
+                            {
+
+                                String clubkey = childSnapshot.getKey();
+                                childSnapshot.getRef().removeValue();
+                                favourite.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favourite_filled));
+
+                                Log.d("cannot add","cnt add"+clubkey);
+                            }
+
+
+                            Log.d("cannot add","cnt add");
+                            Toast.makeText(getApplicationContext(),"Favourite already added",Toast.LENGTH_LONG).show();
+
+                        }else{
+                            // username not found
+                            String songId = extras.getString("song_id");
+                            String songName = extras.getString("song_name");
+                            String songUrl = extras.getString("song_url");
+                            String imageUrl = extras.getString("song_imageurl");
+                            String songArtist = extras.getString("song_artist");
+                            String songDuration = extras.getString("song_duration");
+
+
+                            FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+                            DatabaseReference reference = rootNode.getReference("Favourites");
+                            String id = reference.push().getKey();
+                            String id1 = loggedemail.replace(".", ",");
+
+
+                            FavouritesSongModel addFavourite = new FavouritesSongModel(loggedemail, songId, songName, songUrl, imageUrl, songArtist, songDuration);
+                            reference.child(id1).child(id).setValue(addFavourite);
+
+                            favourite.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favourite_filled));
+                        }
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+             /*   String songId = extras.getString("song_id");
                 String songName = extras.getString("song_name");
                 String songUrl = extras.getString("song_url");
                 String imageUrl = extras.getString("song_imageurl");
@@ -165,11 +265,14 @@ public class PlaySong extends AppCompatActivity {
 
                 FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
                 DatabaseReference reference = rootNode.getReference("Favourites");
-                String id =reference.push().getKey();
-                FavouritesSongModel addFavourite = new FavouritesSongModel(loggedemail, songId, songName, songUrl, imageUrl, songArtist, songDuration);
-                reference.child(id).setValue(addFavourite);
+                String id = reference.push().getKey();
+                String id1 = loggedemail.replace(".", ",");
 
-                favourite.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favourite_filled));
+
+                FavouritesSongModel addFavourite = new FavouritesSongModel(loggedemail, songId, songName, songUrl, imageUrl, songArtist, songDuration);
+                reference.child(id1).child(id).setValue(addFavourite);
+
+                favourite.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favourite_filled));*/
             }
         });
         //Favourite ended here
@@ -276,5 +379,38 @@ public class PlaySong extends AppCompatActivity {
         });
 //pause ended
 
+    }
+
+    private void getFavourites() {
+
+        Log.d("HEY INTO GET FAV", "HEYYY" );
+
+        Query query = favReference.orderByChild("loggedemail");//.equalTo(loggedemail);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Log.d("user", "" + snapshot);
+                    for (DataSnapshot user : snapshot.getChildren()) {
+                        Log.d("Favoutrite songs ", "" + user);
+                        FavouritesSongModel favouritesSongModel = user.getValue(FavouritesSongModel.class);
+                        if (favouritesSongModel.getLoggedemail().equals(loggedemail)) {
+                            Log.d("HEY SONG NAME " , "" + favouritesSongModel.getSongName());
+                            Log.d("HEY SONG ID " , "" + favouritesSongModel.getSongId());
+                            favourite.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favourite_filled));
+                        } else {
+                            Toast.makeText(getApplicationContext(), "No favourites added", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "No favourites added", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

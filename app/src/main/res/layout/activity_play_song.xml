@@ -195,11 +195,11 @@
 
             <ImageView
 
+                android:id="@+id/favourite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
-                android:id="@+id/favourite"
                 android:padding="10dp"
                 android:src="@drawable/ic_favorite_border" />
 
@@ -209,16 +209,16 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:padding="10dp"
-                android:visibility="gone"
-                android:src="@drawable/ic_baseline_shuffle_24" />
+                android:src="@drawable/ic_baseline_shuffle_24"
+                android:visibility="gone" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:visibility="gone"
-                android:src="@drawable/ic_baseline_repeat_24" />
+                android:src="@drawable/ic_baseline_repeat_24"
+                android:visibility="gone" />
         </LinearLayout>
 
 
